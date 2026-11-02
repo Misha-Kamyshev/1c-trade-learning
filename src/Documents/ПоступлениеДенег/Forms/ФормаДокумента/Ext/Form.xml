@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Номер" id="1">
+			<DataPath>Объект.Number</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Дата" id="4">
+			<DataPath>Объект.Date</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="РасчетныйСчет" id="13">
+			<DataPath>Объект.РасчетныйСчет</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="РасчетныйСчетКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="РасчетныйСчетРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<InputField name="Покупатель" id="7">
+			<DataPath>Объект.Покупатель</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ПокупательКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПокупательРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="РасчетныйСчетПокупателя" id="10">
+			<DataPath>Объект.РасчетныйСчетПокупателя</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<CreateButton>false</CreateButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.Владелец</xr:Name>
+					<xr:DataPath xsi:type="xs:string">Объект.Покупатель</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="РасчетныйСчетПокупателяКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="РасчетныйСчетПокупателяРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<UsualGroup name="РаботаССуммой" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Работа с суммой</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Работа с суммой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="РаботаССуммойРасширеннаяПодсказка" id="20"/>
+			<ChildItems>
+				<InputField name="Сумма" id="16">
+					<DataPath>Объект.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="СуммаКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="18"/>
+					<Events>
+						<Event name="OnChange">СуммаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="ПересчитатьСумму" id="55">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПересчитатьСумму</CommandName>
+					<ExtendedTooltip name="ПересчитатьСуммуРасширеннаяПодсказка" id="56"/>
+				</Button>
+				<Button name="РаспределитьСумму" id="21">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.РаспределитьСумму</CommandName>
+					<ExtendedTooltip name="РаспределитьСуммуРасширеннаяПодсказка" id="22"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ДокументыДляОплаты" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы для оплаты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы для оплаты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ДокументыДляОплатыРасширеннаяПодсказка" id="37"/>
+			<ChildItems>
+				<Table name="ДокументыРасходовТоваров" id="23">
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Объект.ДокументыРасходовТоваров</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ДокументыРасходовТоваровКонтекстноеМеню" id="24"/>
+					<AutoCommandBar name="ДокументыРасходовТоваровКоманднаяПанель" id="25">
+						<ChildItems>
+							<Button name="ПодборДокументов" id="53">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодборДокументов</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="ПодборДокументовРасширеннаяПодсказка" id="54"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ДокументыРасходовТоваровРасширеннаяПодсказка" id="26"/>
+					<SearchStringAddition name="ДокументыРасходовТоваровСтрокаПоиска" id="27">
+						<AdditionSource>
+							<Item>ДокументыРасходовТоваров</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыРасходовТоваровСтрокаПоискаКонтекстноеМеню" id="28"/>
+						<ExtendedTooltip name="ДокументыРасходовТоваровСтрокаПоискаРасширеннаяПодсказка" id="29"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ДокументыРасходовТоваровСостояниеПросмотра" id="30">
+						<AdditionSource>
+							<Item>ДокументыРасходовТоваров</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыРасходовТоваровСостояниеПросмотраКонтекстноеМеню" id="31"/>
+						<ExtendedTooltip name="ДокументыРасходовТоваровСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ДокументыРасходовТоваровУправлениеПоиском" id="33">
+						<AdditionSource>
+							<Item>ДокументыРасходовТоваров</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыРасходовТоваровУправлениеПоискомКонтекстноеМеню" id="34"/>
+						<ExtendedTooltip name="ДокументыРасходовТоваровУправлениеПоискомРасширеннаяПодсказка" id="35"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="AfterDeleteRow">ДокументыПриходовТоваровПослеУдаления</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="ДокументыРасходовТоваровНомерСтроки" id="38">
+							<DataPath>Объект.ДокументыРасходовТоваров.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДокументыРасходовТоваровНомерСтрокиКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="ДокументыРасходовТоваровНомерСтрокиРасширеннаяПодсказка" id="40"/>
+						</LabelField>
+						<InputField name="ДокументыРасходовТоваровДокумент" id="41">
+							<DataPath>Объект.ДокументыРасходовТоваров.Документ</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыРасходовТоваровДокументКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ДокументыРасходовТоваровДокументРасширеннаяПодсказка" id="43"/>
+							<Events>
+								<Event name="OnChange">ДокументыПриходовТоваровДокументПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДокументыРасходовТоваровСуммаДокумента" id="50">
+							<DataPath>Объект.ДокументыРасходовТоваров.СуммаДокумента</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыРасходовТоваровСуммаДокументаКонтекстноеМеню" id="51"/>
+							<ExtendedTooltip name="ДокументыРасходовТоваровСуммаДокументаРасширеннаяПодсказка" id="52"/>
+						</InputField>
+						<InputField name="ДокументыРасходовТоваровСуммаОстатка" id="44">
+							<DataPath>Объект.ДокументыРасходовТоваров.СуммаОстатка</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыРасходовТоваровСуммаОстаткаКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="ДокументыРасходовТоваровСуммаОстаткаРасширеннаяПодсказка" id="46"/>
+						</InputField>
+						<InputField name="ДокументыРасходовТоваровСуммаОплаты" id="47">
+							<DataPath>Объект.ДокументыРасходовТоваров.СуммаОплаты</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыРасходовТоваровСуммаОплатыКонтекстноеМеню" id="48"/>
+							<ExtendedTooltip name="ДокументыРасходовТоваровСуммаОплатыРасширеннаяПодсказка" id="49"/>
+						</InputField>
+						<InputField name="ДокументыРасходовТоваровДатаДокументов" id="57">
+							<DataPath>Объект.ДокументыРасходовТоваров.ДатаДокумента</DataPath>
+							<Visible>false</Visible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыРасходовТоваровДатаДокументовКонтекстноеМеню" id="58"/>
+							<ExtendedTooltip name="ДокументыРасходовТоваровДатаДокументовРасширеннаяПодсказка" id="59"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ПоступлениеДенег</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="СуммаРаспределена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма распределена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗаписьПодтверждена" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запись подтверждена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаОплатыИзменена" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма оплаты изменена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="РаспределитьСумму" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить сумму</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить сумму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>РаспределитьСумму</Action>
+		</Command>
+		<Command name="ПодборДокументов" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор документов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор документов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборДокументов</Action>
+		</Command>
+		<Command name="ПересчитатьСумму" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать сумму</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать сумму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПересчитатьСумму</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>AccumulationRegister.Взаиморасчеты.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Номер" id="1">
+			<DataPath>Объект.Number</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Дата" id="4">
+			<DataPath>Объект.Date</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="РасчетныйСчет" id="7">
+			<DataPath>Объект.РасчетныйСчет</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<CreateButton>false</CreateButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="РасчетныйСчетКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РасчетныйСчетРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Поставщик" id="10">
+			<DataPath>Объект.Поставщик</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<CreateButton>false</CreateButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ПоставщикКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПоставщикРасширеннаяПодсказка" id="12"/>
+			<Events>
+				<Event name="OnChange">ПоставщикПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="РасчетныйСчетПоставщика" id="13">
+			<DataPath>Объект.РасчетныйСчетПоставщика</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<CreateButton>false</CreateButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.Владелец</xr:Name>
+					<xr:DataPath xsi:type="xs:string">Объект.Поставщик</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="РасчетныйСчетПоставщикаКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="РасчетныйСчетПоставщикаРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<UsualGroup name="РаботаССуммой" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Работа с суммой</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Работа с суммой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="РаботаССуммойРасширеннаяПодсказка" id="49"/>
+			<ChildItems>
+				<InputField name="Сумма" id="16">
+					<DataPath>Объект.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="СуммаКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="18"/>
+					<Events>
+						<Event name="OnChange">СуммаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="ПересчитатьСумму" id="58">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПересчитатьСумму</CommandName>
+					<ExtendedTooltip name="ПересчитатьСуммуРасширеннаяПодсказка" id="59"/>
+				</Button>
+				<Button name="РаспределитьСумму" id="50">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.РаспределитьСумму</CommandName>
+					<ExtendedTooltip name="РаспределитьСуммуРасширеннаяПодсказка" id="51"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ДокументыДляОплаты" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы для оплаты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы для оплаты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ДокументыДляОплатыРасширеннаяПодсказка" id="47"/>
+			<ChildItems>
+				<Table name="ДокументыПриходовТоваров" id="19">
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Объект.ДокументыПриходовТоваров</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ДокументыПриходовТоваровКонтекстноеМеню" id="20"/>
+					<AutoCommandBar name="ДокументыПриходовТоваровКоманднаяПанель" id="21">
+						<ChildItems>
+							<Button name="ПодборДокументов" id="44">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодборДокументов</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="ПодборДокументовРасширеннаяПодсказка" id="45"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ДокументыПриходовТоваровРасширеннаяПодсказка" id="22"/>
+					<SearchStringAddition name="ДокументыПриходовТоваровСтрокаПоиска" id="23">
+						<AdditionSource>
+							<Item>ДокументыПриходовТоваров</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыПриходовТоваровСтрокаПоискаКонтекстноеМеню" id="24"/>
+						<ExtendedTooltip name="ДокументыПриходовТоваровСтрокаПоискаРасширеннаяПодсказка" id="25"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ДокументыПриходовТоваровСостояниеПросмотра" id="26">
+						<AdditionSource>
+							<Item>ДокументыПриходовТоваров</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыПриходовТоваровСостояниеПросмотраКонтекстноеМеню" id="27"/>
+						<ExtendedTooltip name="ДокументыПриходовТоваровСостояниеПросмотраРасширеннаяПодсказка" id="28"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ДокументыПриходовТоваровУправлениеПоиском" id="29">
+						<AdditionSource>
+							<Item>ДокументыПриходовТоваров</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыПриходовТоваровУправлениеПоискомКонтекстноеМеню" id="30"/>
+						<ExtendedTooltip name="ДокументыПриходовТоваровУправлениеПоискомРасширеннаяПодсказка" id="31"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="AfterDeleteRow">ДокументыПриходовТоваровПослеУдаления</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="ДокументыПриходовТоваровНомерСтроки" id="32">
+							<DataPath>Объект.ДокументыПриходовТоваров.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДокументыПриходовТоваровНомерСтрокиКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="ДокументыПриходовТоваровНомерСтрокиРасширеннаяПодсказка" id="34"/>
+						</LabelField>
+						<InputField name="ДокументыПриходовТоваровДокумент" id="35">
+							<DataPath>Объект.ДокументыПриходовТоваров.Документ</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CreateButton>false</CreateButton>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<QuickChoice>true</QuickChoice>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Отбор.Поставщик</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Объект.Поставщик</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ChoiceParameters>
+								<app:item name="Отбор.Проведен">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="ДокументыПриходовТоваровДокументКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="ДокументыПриходовТоваровДокументРасширеннаяПодсказка" id="37"/>
+							<Events>
+								<Event name="OnChange">ДокументыПриходовТоваровДокументПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДокументыПриходовТоваровСуммаДокумента" id="55">
+							<DataPath>Объект.ДокументыПриходовТоваров.СуммаДокумента</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыПриходовТоваровСуммаДокументаКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="ДокументыПриходовТоваровСуммаДокументаРасширеннаяПодсказка" id="57"/>
+						</InputField>
+						<InputField name="ДокументыПриходовТоваровСуммаОстатка" id="41">
+							<DataPath>Объект.ДокументыПриходовТоваров.СуммаОстатка</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыПриходовТоваровСуммаОстаткаКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ДокументыПриходовТоваровСуммаОстаткаРасширеннаяПодсказка" id="43"/>
+						</InputField>
+						<InputField name="ДокументыПриходовТоваровСуммаОплаты" id="52">
+							<DataPath>Объект.ДокументыПриходовТоваров.СуммаОплаты</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыПриходовТоваровСуммаОплатыКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="ДокументыПриходовТоваровСуммаОплатыРасширеннаяПодсказка" id="54"/>
+						</InputField>
+						<InputField name="ДокументыПриходовТоваровДатаДокумента" id="60">
+							<DataPath>Объект.ДокументыПриходовТоваров.ДатаДокумента</DataPath>
+							<Visible>false</Visible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ДокументыПриходовТоваровДатаДокументаКонтекстноеМеню" id="61"/>
+							<ExtendedTooltip name="ДокументыПриходовТоваровДатаДокументаРасширеннаяПодсказка" id="62"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.Оплата</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="СуммаОплатыИзменена" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма оплаты изменена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаРаспределена" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма распределена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗаписьПодтверждена" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запись подтверждена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодборДокументов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор документов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор документов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборДокументов</Action>
+		</Command>
+		<Command name="РаспределитьСумму" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить сумму</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Распределить сумму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>РаспределитьСумму</Action>
+		</Command>
+		<Command name="ПересчитатьСумму" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать сумму</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать сумму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПересчитатьСумму</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>AccumulationRegister.Взаиморасчеты.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>
